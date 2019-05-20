@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Switch, Route} from 'react-router-dom';
-import Home from './components/Home/Home'
+import Sidenav from './components/Sidenav/Sidenav'
 
 class App extends Component {
   constructor(props) {
@@ -15,7 +15,7 @@ class App extends Component {
           <Route
             exact path="/"
             render={routerProps => (
-              <Home 
+              <Sidenav 
               {...routerProps} 
               {...this.state} />
             )}

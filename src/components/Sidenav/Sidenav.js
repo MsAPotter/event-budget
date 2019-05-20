@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import './Home.css'
+import './Sidenav.css'
 import {Link} from 'react-router-dom';
 
-class Home extends Component {
+class Sidenav extends Component {
     constructor(props) {
         super()
     }
@@ -21,6 +21,6 @@ class Home extends Component {
     }
 }
 
-export default Home;
+export default Sidenav;
 
 // Icons Reference: https://www.w3schools.com/icons/fontawesome_icons_webapp.asp
