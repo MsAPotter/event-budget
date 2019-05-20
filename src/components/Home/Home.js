@@ -1,18 +1,37 @@
 import React, { Component } from 'react';
 import '../Home/Home.css'
 
+let placeholder = [
+    `Take me to Greece!`,
+    "Road trip to Mount Rushmore",
+    "Honeymoon in Hawaii",
+    "Bermuda, Bahama, come on pretty mama"
+]
+
 class Home extends Component {
     constructor(props) {
         super()
 
         this.state = {
             input: '',
-            trip: ''
+            trip: '',
+            placeholder
           }
 
         this.handleChange = this.handleChange.bind(this);
         this.eventDetails = this.eventDetails.bind(this);
     }
+
+    componentDidMount() {
+        var x = Math.floor(Math.random() * placeholder.length);
+        placeholder = placeholder[x]
+        console.log(placeholder)
+        this.setState({
+            placeholder: placeholder
+          })
+    }
+    
+    
 
 
     handleChange(event) {
@@ -29,6 +48,7 @@ class Home extends Component {
         }
   
     render() {
+        console.log(placeholder)
         return (
             <div className="container">
                 <div className="content">
@@ -39,7 +59,7 @@ class Home extends Component {
                     type="text" 
                     name="event"
                     id="event"
-                    placeholder="Take me to Greece!"
+                    placeholder= {placeholder}
                     onChange={this.handleChange}
                     onSubmit={this.eventDetails}
                     />
