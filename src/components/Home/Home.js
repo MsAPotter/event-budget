@@ -22,3 +22,5 @@ class Home extends Component {
 }
 
 export default Home;
+
+// Icons Reference: https://www.w3schools.com/icons/fontawesome_icons_webapp.asp
