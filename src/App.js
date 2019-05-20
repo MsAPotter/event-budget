@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Route, Switch} from 'react-router-dom';
 import Home from './components/Home/Home';
+import EventCost from './components/EventCost/EventCost';
 
 const newEvents = [];
 
@@ -33,6 +34,15 @@ class App extends Component {
             render={routerProps => (
               <Home 
               addEvent={this.addEvent}
+              {...this.state} />
+            )}
+          />
+
+        <Route
+            exact path="/eventcost"
+            render={routerProps => (
+              <EventCost 
+              {...routerProps} 
               {...this.state} />
             )}
           />

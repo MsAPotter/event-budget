@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
-import '../Home/Home.css'
+import '../Home/Home.css';
+import EventCost from '../EventCost/EventCost';
+import {Link} from 'react-router-dom';
 
 let placeholder = [
     `Take me to Greece!`,
@@ -43,10 +45,17 @@ class Home extends Component {
         }
         console.log(newEvent)
         this.props.addEvent(newEvent)
-        }
+
+        this.setState({'submitted': true })
+// Reference:  https://stackoverflow.com/questions/28907965/how-do-i-add-a-component-after-an-submit-event-using-reactjs
+        
+}
   
     render() {
         // console.log(placeholder)
+        if (this.state.submitted) {
+            return <EventCost />
+        } else {
         return (
             <div className="container">
                 <div className="content">
@@ -65,6 +74,7 @@ class Home extends Component {
                 </div>
             </div>
         );
+    }
     }
 }
 
