@@ -13,13 +13,12 @@ class Home extends Component {
         super()
 
         this.state = {
-            input: '',
-            trip: '',
-            placeholder
+            input: "",
+            trip: ""
           }
 
         this.handleChange = this.handleChange.bind(this);
-        this.eventDetails = this.eventDetails.bind(this);
+        this.handleEventDetails = this.handleEventDetails.bind(this);
     }
 
     componentDidMount() {
@@ -30,9 +29,6 @@ class Home extends Component {
             placeholder: placeholder
           })
     }
-    
-    
-
 
     handleChange(event) {
         this.setState({
@@ -40,29 +36,32 @@ class Home extends Component {
         })
       }
 
-    eventDetails(trip) {
+    handleEventDetails(event) {
+        event.preventDefault();
         let newEvent = {
-            trip: this.state.trip
+            trip: this.state.input
         }
+        console.log(newEvent)
         this.props.addEvent(newEvent)
         }
   
     render() {
-        console.log(placeholder)
+        // console.log(placeholder)
         return (
             <div className="container">
                 <div className="content">
                     <h1>Where do you want to go?</h1>
                     <h1>What do you want to do?</h1>
 
+                    <form onSubmit={this.handleEventDetails}>
                     <input 
                     type="text" 
-                    name="event"
-                    id="event"
+                    id="trip"
+                    value={this.props.trip}
                     placeholder= {placeholder}
                     onChange={this.handleChange}
-                    onSubmit={this.eventDetails}
                     />
+                    </form>
                 </div>
             </div>
         );
