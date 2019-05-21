@@ -7,12 +7,12 @@ class EventCost extends Component {
 		super(props);
 
 		this.state = {
-			planeticket: 0,
-			gas: 0,
-			accomodation: 0,
-			transportation: 0,
-			food: 0,
-			total: 0
+			planeticket: '',
+			gas: '',
+			accomodation: '',
+			transportation: '',
+			food: '',
+			total: ''
 		};
 
 		this.handleChange = this.handleChange.bind(this);
@@ -21,27 +21,37 @@ class EventCost extends Component {
 	}
 
 	handleChange(event) {
+		let value;
+		if (isNaN(parseInt(event.target.value, 10))) {
+			value = 0;
+		} else {
+			value = event.target.value;
+		}
 		this.setState({
-			[event.target.name]: event.target.value
+			[event.target.name]: value
 		});
 	}
 
 	componentDidUpdate() {
+		let values = [
+			this.state.planeticket,
+			this.state.gas,
+			this.state.accomodation,
+			this.state.transportation,
+			this.state.food
+		];
+		let addValues = values.filter((value) => !isNaN(parseInt(value, 10)));
+		console.log(addValues);
 		if (
-			this.state.total !==
-			parseInt(this.state.planeticket, 10) +
-				parseInt(this.state.gas, 10) +
-				parseInt(this.state.accomodation, 10) +
-				parseInt(this.state.transportation, 10) +
-				parseInt(this.state.food, 10)
+			parseInt(this.state.total, 10) !=
+			addValues.reduce((acc, cv) => {
+				return (acc = parseInt(acc, 10) + parseInt(cv, 10));
+			})
 		) {
 			this.setState({
-				total:
-					parseInt(this.state.planeticket, 10) +
-					parseInt(this.state.gas, 10) +
-					parseInt(this.state.accomodation, 10) +
-					parseInt(this.state.transportation, 10) +
-					parseInt(this.state.food, 10)
+				total: addValues.reduce((acc, cv) => {
+					return (acc = parseInt(acc, 10) + parseInt(cv, 10));
+				})
 			});
 		}
 	}
