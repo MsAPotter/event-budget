@@ -38,6 +38,7 @@ class App extends Component {
   render() {
     console.log('App: render')
     console.log(this.state.newEvents)
+    console.log(this.state.TotalCosts)
 
     return (
       <div>

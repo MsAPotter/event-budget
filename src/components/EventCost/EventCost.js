@@ -71,7 +71,7 @@ class EventCost extends Component {
                     name="planeticket"
                     value={this.props.planeticket}
                     // placeholder="1500"
-                    onChange={this.handleplaneticket}
+                    onChange={this.handleChange}
                     
                     ></input>
                     </div>
@@ -84,7 +84,7 @@ class EventCost extends Component {
                     id="gas"
                     value={this.props.gas}
                     placeholder="100"
-                    onChange={this.handleGas}
+                    onChange={this.handleChange}
                     name="gas"
                     ></input>
                     </div>
