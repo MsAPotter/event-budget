@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Sidenav from './components/Sidenav/Sidenav';
-import { Route, Switch } from 'react-router-dom';
-import Home from './components/Home/Home';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import Expenses from './components/Expenses/Expenses';
 import EventCost from './components/EventCost/EventCost';
+import Events from './components/Events/Events';
+import AddEvent from './components/AddEvent/AddEvent';
 import './App.css';
 
 const newEvents = [];
@@ -14,7 +15,8 @@ class App extends Component {
 		super(props);
 		this.state = {
 			newEvents: newEvents,
-			TotalCosts: TotalCosts
+			TotalCosts: TotalCosts,
+			events: []
 		};
 		this.addEvent = this.addEvent.bind(this);
 		this.addTotalCost = this.addTotalCost.bind(this);
@@ -49,11 +51,18 @@ class App extends Component {
 						<Route
 							exact
 							path="/"
-							render={(routerProps) => <Home addEvent={this.addEvent} {...this.state} {...routerProps} />}
+							render={(routerProps) => {
+								if (this.state.events < 1) {
+									return <Redirect to="/add-event" />;
+								} else {
+									return <Events />;
+								}
+							}}
 						/>
+						<Route exact path="/add-event" render={(routerProps) => <AddEvent {...this.state} />} />
 						<Route
 							exact
-							path="/eventcost"
+							path="/event-cost"
 							render={(routerProps) => (
 								<EventCost addTotalCost={this.addTotalCost} {...this.state} {...routerProps} />
 							)}

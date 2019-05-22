@@ -1,7 +1,7 @@
 .App {
 	display: grid;
 	grid-template-rows: auto;
-	grid-template-columns: 100px auto;
+	grid-template-columns: 160px auto;
 }
 
 .App-Nav {
