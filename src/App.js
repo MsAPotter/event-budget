@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Sidenav from './components/Sidenav/Sidenav'
 import {Route, Switch} from 'react-router-dom';
 import Home from './components/Home/Home';
 import Expenses from './components/Expenses/Expenses';
@@ -10,6 +11,17 @@ const TotalCosts = [];
 class App extends Component {
   constructor(props) {
     super()
+
+//   }
+//   render() {
+//     return (
+//       <div>
+//         <Switch>
+//           <Route
+//             exact path="/"
+//             render={routerProps => (
+//               <Sidenav 
+//               {...routerProps} 
 
     this.state = {
       newEvents: newEvents,
@@ -45,6 +57,15 @@ class App extends Component {
     return (
       <div>
         <Switch>
+   
+        <Route
+          exact path="/"
+          render={routerProps => (
+            <Sidenav 
+            {...routerProps} />
+      )}
+  />
+      
         <Route
             exact path="/"
             render={routerProps => (
