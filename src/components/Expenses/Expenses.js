@@ -114,10 +114,11 @@ class Expenses extends Component {
                 </div>
 
                 <button type="submit" className="expenses-submit">Submit</button>
-                    
+
             </div>
         );
     }
 }
 
 export default Expenses;
+
