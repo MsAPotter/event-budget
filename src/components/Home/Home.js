@@ -15,12 +15,13 @@ class Home extends Component {
         super()
 
         this.state = {
-            input: "",
-            trip: ""
+            input: '',
+            trip: ''
           }
 
         this.handleChange = this.handleChange.bind(this);
-        this.handleEventDetails = this.handleEventDetails.bind(this);
+        this.eventDetails = this.eventDetails.bind(this);
+      this.handleEventDetails = this.handleEventDetails.bind(this);
     }
 
     componentDidMount() {
@@ -37,6 +38,15 @@ class Home extends Component {
           input: event.target.value
         })
       }
+
+    eventDetails(trip) {
+        let newEvent = {
+            trip: this.state.trip
+        }
+        this.props.addEvent(newEvent)
+        }
+  
+//     render() {
 
     handleEventDetails(event) {
         event.preventDefault();
@@ -62,6 +72,15 @@ class Home extends Component {
                     <h1>Where do you want to go?</h1>
                     <h1>What do you want to do?</h1>
 
+                    <input 
+                    type="text" 
+                    name="event"
+                    id="event"
+                    placeholder="Take me to Greece!"
+                    onChange={this.handleChange}
+                    onSubmit={this.eventDetails}
+                    />
+
                     <form onSubmit={this.handleEventDetails}>
                     <input 
                     type="text" 
@@ -71,11 +90,14 @@ class Home extends Component {
                     onChange={this.handleChange}
                     />
                     </form>
+
                 </div>
             </div>
         );
     }
+
     }
+
 }
 
 export default Home;
