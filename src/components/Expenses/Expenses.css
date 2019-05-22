@@ -57,7 +57,7 @@ p {
 	display: inline-block;
 	margin-left: 50px;
 }
-input {
+.expense-input {
 	outline: none;
 	width: 100px;
 	border: 1px solid grey;

@@ -5,6 +5,7 @@ import Expenses from './components/Expenses/Expenses';
 import EventCost from './components/EventCost/EventCost';
 import Events from './components/Events/Events';
 import AddEvent from './components/AddEvent/AddEvent';
+import axios from 'axios';
 import './App.css';
 
 const newEvents = [];
@@ -16,7 +17,9 @@ class App extends Component {
 		this.state = {
 			newEvents: newEvents,
 			TotalCosts: TotalCosts,
-			events: []
+			userId: '5ce45ac1456d2e0017bb0d7f',
+			events: [],
+			dataLoaded: false
 		};
 		this.addEvent = this.addEvent.bind(this);
 		this.addTotalCost = this.addTotalCost.bind(this);
@@ -37,6 +40,13 @@ class App extends Component {
 		this.setState({ TotalCosts: TotalCosts });
 	}
 
+	componentDidMount() {
+		axios.get(`https://event-budget-api.herokuapp.com/api/${this.state.userId}/events`).then((events) => {
+			console.log(events);
+			this.setState({ events: events.data, dataLoaded: true });
+		});
+	}
+
 	render() {
 		console.log('App: render');
 		console.log(this.state.newEvents);
@@ -52,7 +62,9 @@ class App extends Component {
 							exact
 							path="/"
 							render={(routerProps) => {
-								if (this.state.events < 1) {
+								console.log(this.state.events);
+								console.log(this.state.dataLoaded);
+								if (this.state.events.length < 1 && this.state.dataLoaded === true) {
 									return <Redirect to="/add-event" />;
 								} else {
 									return <Events />;

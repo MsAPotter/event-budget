@@ -36,7 +36,7 @@ class Expenses extends Component {
 										<p>
 											<i className="fas fa-home" /> Rent / Mortgage
 										</p>
-										<input />
+										<input className="expense-input" />
 									</div>
 									<div className="box">
 										<p>
