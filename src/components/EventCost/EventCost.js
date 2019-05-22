@@ -46,12 +46,12 @@ class EventCost extends Component {
 			parseInt(this.state.total, 10) !=
 			addValues.reduce((acc, cv) => {
 				return (acc = parseInt(acc, 10) + parseInt(cv, 10));
-			})
+			}, 0)
 		) {
 			this.setState({
 				total: addValues.reduce((acc, cv) => {
 					return (acc = parseInt(acc, 10) + parseInt(cv, 10));
-				})
+				}, 0)
 			});
 		}
 	}
