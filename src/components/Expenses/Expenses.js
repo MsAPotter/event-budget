@@ -24,7 +24,7 @@ class Expenses extends Component {
 					your best guess. And remember to round up!
 				</h1>
 				<div>
-					<h1>Essentials</h1>
+					<h1 className="bills-headings">Essentials</h1>
 					<div className="dropdown">
 						<div onClick={(e) => this.togglePanel(e)} className="header">
 							Home<span>+</span>
@@ -141,7 +141,7 @@ class Expenses extends Component {
 				</div>
 
 				<div>
-					<h1>Lifestyle</h1>
+					<h1 className="bills-headings">Lifestyle</h1>
 
 					<div className="dropdown">
 						<div onClick={(e) => this.togglePanel(e)} className="header">
@@ -219,7 +219,7 @@ class Expenses extends Component {
 				</div>
 
 				<div>
-					<h1>Retirement</h1>
+					<h1 className="bills-headings">Retirement</h1>
 
 					<div className="dropdown">
 						<div onClick={(e) => this.togglePanel(e)} className="header">
