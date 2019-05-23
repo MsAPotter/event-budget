@@ -22,6 +22,7 @@ class EventCost extends Component {
 	}
 
 	handleChange(event) {
+		console.log('EventCost: handleChange');
 		let value;
 		if (isNaN(parseInt(event.target.value, 10))) {
 			value = 0;
@@ -34,6 +35,7 @@ class EventCost extends Component {
 	}
 
 	componentDidUpdate() {
+		console.log('EventCost: componentDidUpdate');
 		let values = [
 			this.state.planeticket,
 			this.state.gas,
@@ -69,6 +71,7 @@ class EventCost extends Component {
 	// }
 
 	handleTotalCost(event) {
+		console.log('EventCost: handleTotalCost');
 		event.preventDefault();
 		let expenses = [
 			{
@@ -111,6 +114,7 @@ class EventCost extends Component {
 	}
 
 	render() {
+		console.log('EventCost: render');
 		if (this.state.submitted) {
 			return <Expenses />;
 		} else {

@@ -14,6 +14,7 @@ class Bill extends Component {
 	}
 
 	handleBillInput(evt) {
+		console.log('Bill: handleBillInput');
 		this.setState({
 				name: evt.target.name,
 				amount: evt.target.value

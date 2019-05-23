@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import './Login.css';
 
 class Login extends Component {
 	constructor(props) {
@@ -16,12 +17,14 @@ class Login extends Component {
 	}
 
 	handleUserFields(evt) {
+		console.log('Login: handleUserFields');
 		this.setState({
 			[evt.target.name]: evt.target.value
 		});
 	}
 
 	login(evt) {
+		console.log('Login: login');
 		evt.preventDefault();
 		if (this.state.username && this.state.password) {
 			axios.get('https://event-budget-api.herokuapp.com/api/users').then((users) => {
@@ -43,6 +46,7 @@ class Login extends Component {
 
 	signup(evt) {
 		evt.preventDefault();
+		console.log('Login: signup');
 		if (this.state.username && this.state.password && this.state.pwconfirm) {
 			if (this.state.password === this.state.pwconfirm) {
 				let newUser = {
@@ -65,6 +69,7 @@ class Login extends Component {
 	}
 
 	render() {
+		console.log('Login: render');
 		return (
 			<div className="Login">
 				<h2>Please sign in.</h2>
@@ -75,52 +80,54 @@ class Login extends Component {
 						provide any real-world information you are not comfortable sharing.
 					</em>
 				</p>
-				<div className="Login-Login">
-					<h2>Log In</h2>
-					<form onSubmit={this.login}>
-						<input
-							className="Login-Field"
-							type="text"
-							placeholder="Username"
-							name="username"
-							onChange={this.handleUserFields}
-						/>
-						<input
-							className="Login-Field"
-							type="password"
-							placeholder="Password"
-							name="password"
-							onChange={this.handleUserFields}
-						/>
-						<input type="submit" />
-					</form>
-				</div>
-				<div className="Login-Sign Up">
-					<h2>Sign Up</h2>
-					<form onSubmit={this.signup}>
-						<input
-							className="Login-Field"
-							type="text"
-							placeholder="Username"
-							name="username"
-							onChange={this.handleUserFields}
-						/>
-						<input
-							className="Login-Field"
-							type="password"
-							placeholder="Password"
-							name="password"
-							onChange={this.handleUserFields}
-						/>
-						<input
-							className="Login-Field"
-							type="password"
-							placeholder="Confirm Password"
-							name="pwconfirm"
-							onChange={this.handleUserFields}
-						/>
-						<input type="submit" />
-					</form>
+				<div className="Login-Forms">
+					<div className="Login-Login">
+						<h2>Log In</h2>
+						<form onSubmit={this.login}>
+							<input
+								className="Login-Field"
+								type="text"
+								placeholder="Username"
+								name="username"
+								onChange={this.handleUserFields}
+							/>
+							<input
+								className="Login-Field"
+								type="password"
+								placeholder="Password"
+								name="password"
+								onChange={this.handleUserFields}
+							/>
+							<input className="Login-Submit" type="submit" />
+						</form>
+					</div>
+					<div className="Login-Signup">
+						<h2>Sign Up</h2>
+						<form onSubmit={this.signup}>
+							<input
+								className="Login-Field"
+								type="text"
+								placeholder="Username"
+								name="username"
+								onChange={this.handleUserFields}
+							/>
+							<input
+								className="Login-Field"
+								type="password"
+								placeholder="Password"
+								name="password"
+								onChange={this.handleUserFields}
+							/>
+							<input
+								className="Login-Field"
+								type="password"
+								placeholder="Confirm Password"
+								name="pwconfirm"
+								onChange={this.handleUserFields}
+							/>
+							<input className="Login-Submit" type="submit" />
+						</form>
+					</div>
 				</div>
 			</div>
 		);

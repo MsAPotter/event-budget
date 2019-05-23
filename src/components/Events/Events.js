@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import Event from './Event.js';
 import './Events.css';
 
@@ -9,8 +10,9 @@ class Events extends Component {
 	}
 
 	render() {
+		console.log('Events: render');
 		let eventCards = this.props.events.map((event, i) => {
-			return <Event {...this.props.events[i]} />;
+			return <Event {...this.props.events[i]} key={i} />;
 		});
 		return (
 			<div>

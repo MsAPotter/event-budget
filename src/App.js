@@ -33,6 +33,7 @@ class App extends Component {
 	}
 
 	selectEvent(eventName) {
+		console.log('App: selectEvent');
 		axios.get(`https://event-budget-api.herokuapp.com/api/${this.state.userId}/events/`).then((events) => {
 			let event = events.data.filter((evt) => {
 				return evt.name === eventName;
@@ -43,6 +44,7 @@ class App extends Component {
 	}
 
 	selectUser(input) {
+		console.log('App: selectUser');
 		this.fetchEvents(input._id);
 		this.setState({ userId: input._id });
 	}
@@ -63,6 +65,7 @@ class App extends Component {
 	}
 
 	fetchEvents(input) {
+		console.log('App: fetchEvents');
 		axios.get(`https://event-budget-api.herokuapp.com/api/${input}/events`).then((events) => {
 			console.log(events);
 			this.setState({ events: events.data, dataLoaded: true });
@@ -70,6 +73,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
+		console.log('App: componentDidMount');
 		if (this.state.userId) {
 			this.fetchEvents(this.state.userId);
 		}

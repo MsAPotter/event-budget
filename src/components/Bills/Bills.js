@@ -138,7 +138,7 @@ class Bills extends Component {
 	}
 
 	render() {
-
+		console.log('Bills: render');
 		let categories = [];
 		for (let i = 0; i < this.state.billCategories.length; i++) {
 			categories.push(
