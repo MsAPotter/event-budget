@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Expenses from '../Expenses/Expenses';
+import Expenses from '../Bills/Bills';
+import axios from 'axios';
 import '../EventCost/EventCost.css';
 
 class EventCost extends Component {
@@ -43,6 +44,7 @@ class EventCost extends Component {
 		let addValues = values.filter((value) => !isNaN(parseInt(value, 10)));
 		console.log(addValues);
 		if (
+			// eslint-disable-next-line
 			parseInt(this.state.total, 10) !=
 			addValues.reduce((acc, cv) => {
 				return (acc = parseInt(acc, 10) + parseInt(cv, 10));
@@ -66,16 +68,47 @@ class EventCost extends Component {
 	//     }
 	// }
 
-	// handleTotalCost(event) {
-	//     event.preventDefault();
-	//     let totalCost = {
-	//         total: this.state.total
-	//     }
-	//     console.log(totalCost)
-	//     this.props.addTotalCost(totalCost)
+	handleTotalCost(event) {
+		event.preventDefault();
+		let expenses = [
+			{
+				name: 'planeticket',
+				cost: this.state.planeticket
+			},
+			{
+				name: 'gas',
+				cost: this.state.gas
+			},
+			{
+				name: 'accomodation',
+				cost: this.state.accomodation
+			},
+			{
+				name: 'transportation',
+				cost: this.state.transportation
+			},
+			{
+				name: 'food',
+				cost: this.state.food
+			}
+		];
+		expenses.forEach((expense) => {
+			axios
+				.post(
+					`https://event-budget-api.herokuapp.com/api/${this.props.userId}/events/${this.props
+						.eventId}/expenses`,
+					expense
+				)
+				.then((exp) => {
+					console.log(exp);
+				});
+		});
 
-	//     this.setState({'submitted': true })
-	// }
+		// console.log(totalCost);
+		// this.props.addTotalCost(totalCost);
+
+		// this.setState({ submitted: true });
+	}
 
 	render() {
 		if (this.state.submitted) {
