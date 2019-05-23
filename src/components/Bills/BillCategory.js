@@ -18,16 +18,18 @@ class BillCategory extends Component {
 	}
 
 	render() {
+
 		let bills = [];
 		for (let i = 0; i < this.props.bills.length; i++) {
-			bills.push(<Bill key={i} bill={this.props.bills[i]} />);
+			bills.push(<Bill addNewBill={this.props.addNewBill} key={i} bill={this.props.bills[i]} {...this.props}/>);
 		}
 		return (
+			<div>
 			<div className="BillCategory" onClick={(e) => this.togglePanel()}>
 				<h2 className="BillCategory-Title">
 					{this.props.category}
 					<span>+</span>
-				</h2>
+				</h2></div>
 				{this.state.open ? <div className="BillCategory-BillList">{bills}</div> : null}
 			</div>
 		);
