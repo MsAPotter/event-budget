@@ -11,11 +11,12 @@ class Sidenav extends Component {
 	render() {
 		return (
 			<div className="sidebar">
+				<div className="nav-header"></div>
 				<NavLink to="/">
-					<i className="sidebar-nav fa fa-home" /> Home
+					<i className="sidebar-nav fa fa-home" /> Dashboard
 				</NavLink>
 				<NavLink to="/expenses">
-					<i className="sidebar-nav fa fa-credit-card-alt" /> Expenses
+					<i className="sidebar-nav fa fa-credit-card-alt" /> Bills
 				</NavLink>
 				<NavLink to="#">
 					<i className="sidebar-nav fa fa-money" /> Income
@@ -23,6 +24,7 @@ class Sidenav extends Component {
 				{/* <Link to="#contact"><i className="sidebar-nav fa fa-fw fa-calendar-check-o"></i> Event</Link> */}
 				{/* <Link to="#contact"><i className="sidebar-nav fa fa-car"></i> Event</Link>     */}
 				{/* <NavLink to="#contact"><i className="sidebar-nav fa fa-smile-o"></i> Event</NavLink>  */}
+				
 			</div>
 		);
 	}

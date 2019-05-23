@@ -6,9 +6,19 @@
   z-index: 1;
   top: 0;
   left: 0;
-  background-color: #111;
+  background-color: #00c9a7;
   overflow-x: hidden;
-  padding-top: 16px;
+  box-shadow: 2px 2px 2px 2px #888888;
+}
+.nav-header {
+  height: 100px;
+  background-color: #ffbb00;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #444444;
+  font-weight: bolder;
+  /* background-image: url(https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
+  background-size: contain; */
 }
 
 /* Style sidebar links */
@@ -16,9 +26,9 @@
   padding: 6px 8px 6px 16px;
   text-decoration: none;
   font-size: 20px;
-  color: #818181;
+  color: #444444;
   display: block;
-  
+  margin-top: 50px;
 }
 /* icons */
 .fa {
@@ -30,8 +40,11 @@
 /* icon plus content */
 .sidebar a {
   text-decoration: none;
-  color: #818181;
+  color: #444444;
   display: block;
+  font-weight: bold;
+  /* letter-spacing: .1em; */
+  font-family: 'Roboto', sans-serif;
 }
 
 
