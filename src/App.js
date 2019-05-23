@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sidenav from './components/Sidenav/Sidenav';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Expenses from './components/Expenses/Expenses';
+import Expenses from './components/Bills/Bills';
 import EventCost from './components/EventCost/EventCost';
 import Events from './components/Events/Events';
 import AddEvent from './components/AddEvent/AddEvent';
@@ -18,11 +18,23 @@ class App extends Component {
 			newEvents: newEvents,
 			TotalCosts: TotalCosts,
 			userId: '5ce45ac1456d2e0017bb0d7f',
+			eventId: '',
 			events: [],
 			dataLoaded: false
 		};
 		this.addEvent = this.addEvent.bind(this);
 		this.addTotalCost = this.addTotalCost.bind(this);
+		this.selectEvent = this.selectEvent.bind(this);
+	}
+
+	selectEvent(eventName) {
+		axios.get(`https://event-budget-api.herokuapp.com/api/${this.state.userId}/events/`).then((events) => {
+			let event = events.data.filter((evt) => {
+				return evt.name === eventName;
+			});
+			console.log(event);
+		});
+		// this.setState({eventId: ''})
 	}
 
 	addEvent(newEvent) {
@@ -67,7 +79,7 @@ class App extends Component {
 								if (this.state.events.length < 1 && this.state.dataLoaded === true) {
 									return <Redirect to="/add-event" />;
 								} else {
-									return <Events />;
+									return <Events selectEvent={this.selectEvent} />;
 								}
 							}}
 						/>
