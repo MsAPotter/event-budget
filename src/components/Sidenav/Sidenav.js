@@ -15,10 +15,10 @@ class Sidenav extends Component {
 				<NavLink to="/">
 					<i className="sidebar-nav fa fa-home" /> Dashboard
 				</NavLink>
-				<NavLink to="/expenses">
+				<NavLink to="/expenses" className="nav-row">
 					<i className="sidebar-nav fa fa-credit-card-alt" /> Bills
 				</NavLink>
-				<NavLink to="#">
+				<NavLink to="#" className="nav-row">
 					<i className="sidebar-nav fa fa-money" /> Income
 				</NavLink>
 				{/* <Link to="#contact"><i className="sidebar-nav fa fa-fw fa-calendar-check-o"></i> Event</Link> */}

@@ -160,12 +160,8 @@ class Bills extends Component {
 				<div className="Bills-CategoryList">
 					<form onSubmit={this.submitBills}>
 						{categories}
-						{/* <button type="submit" className="Bills-Submit">
-							Submit
-						</button> */}
 					<input type="submit" className="Bills-Submit"/>
 					</form>
-					{/* {categories} */}
 					
 
 				</div>
