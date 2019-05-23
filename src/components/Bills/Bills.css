@@ -11,6 +11,14 @@
 	text-align: center;
 	border-radius: 25px;
 	margin: 20px 50px;
+<<<<<<< HEAD:src/components/Bills/Bills.css
+=======
+	font-size: 24px;
+}
+
+.bills-headings {
+	padding: 10px;
+>>>>>>> 3ae6efa0dc290d2d03ee4bf5bf6d0b0ebf766b17:src/components/Expenses/Expenses.css
 	background-color: #00c9a7;
 	color: #fff;
 	font-size: 28px;
