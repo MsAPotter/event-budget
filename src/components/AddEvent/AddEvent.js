@@ -10,7 +10,7 @@ let placeholder = [
 	'Bermuda, Bahama, come on pretty mama'
 ];
 
-let userId = '5ce45ac1456d2e0017bb0d7f';
+// let userId = '5ce45ac1456d2e0017bb0d7f';
 
 class AddEvent extends Component {
 	constructor(props) {
@@ -52,10 +52,12 @@ class AddEvent extends Component {
 			}
 		};
 		console.log(newEvent);
-		axios.post(`https://event-budget-api.herokuapp.com/api/${userId}/events`, newEvent).then((event) => {
-			console.log(event);
-		});
-		this.setState({ submitted: true });
+		axios
+			.post(`https://event-budget-api.herokuapp.com/api/${this.props.userId}/events`, newEvent)
+			.then((posted) => {
+				console.log(posted);
+				this.setState({ submitted: true });
+			});
 		// Reference:  https://stackoverflow.com/questions/28907965/how-do-i-add-a-component-after-an-submit-event-using-reactjs
 	}
 
@@ -71,7 +73,7 @@ class AddEvent extends Component {
 
 	render() {
 		if (this.state.submitted === true) {
-			return <Redirect to="/event-cost" />;
+			return <Redirect to="/" />;
 		} else {
 			return (
 				<div className="content">

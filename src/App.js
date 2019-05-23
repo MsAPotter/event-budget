@@ -5,8 +5,11 @@ import Expenses from './components/Bills/Bills';
 import EventCost from './components/EventCost/EventCost';
 import Events from './components/Events/Events';
 import AddEvent from './components/AddEvent/AddEvent';
+import Login from './components/Login/Login.js';
 import axios from 'axios';
 import './App.css';
+
+// userId: '5ce45ac1456d2e0017bb0d7f',
 
 const newEvents = [];
 const TotalCosts = [];
@@ -17,7 +20,7 @@ class App extends Component {
 		this.state = {
 			newEvents: newEvents,
 			TotalCosts: TotalCosts,
-			userId: '5ce45ac1456d2e0017bb0d7f',
+			userId: '',
 			eventId: '',
 			events: [],
 			dataLoaded: false
@@ -25,6 +28,8 @@ class App extends Component {
 		this.addEvent = this.addEvent.bind(this);
 		this.addTotalCost = this.addTotalCost.bind(this);
 		this.selectEvent = this.selectEvent.bind(this);
+		this.selectUser = this.selectUser.bind(this);
+		this.fetchEvents = this.fetchEvents.bind(this);
 	}
 
 	selectEvent(eventName) {
@@ -35,6 +40,11 @@ class App extends Component {
 			console.log(event);
 		});
 		// this.setState({eventId: ''})
+	}
+
+	selectUser(input) {
+		this.fetchEvents(input._id);
+		this.setState({ userId: input._id });
 	}
 
 	addEvent(newEvent) {
@@ -52,11 +62,17 @@ class App extends Component {
 		this.setState({ TotalCosts: TotalCosts });
 	}
 
-	componentDidMount() {
-		axios.get(`https://event-budget-api.herokuapp.com/api/${this.state.userId}/events`).then((events) => {
+	fetchEvents(input) {
+		axios.get(`https://event-budget-api.herokuapp.com/api/${input}/events`).then((events) => {
 			console.log(events);
 			this.setState({ events: events.data, dataLoaded: true });
 		});
+	}
+
+	componentDidMount() {
+		if (this.state.userId) {
+			this.fetchEvents(this.state.userId);
+		}
 	}
 
 	render() {
@@ -76,10 +92,14 @@ class App extends Component {
 							render={(routerProps) => {
 								console.log(this.state.events);
 								console.log(this.state.dataLoaded);
-								if (this.state.events.length < 1 && this.state.dataLoaded === true) {
-									return <Redirect to="/add-event" />;
+								if (!this.state.userId) {
+									return <Login fetchEvents={this.fetchEvents} selectUser={this.selectUser} />;
 								} else {
-									return <Events selectEvent={this.selectEvent} />;
+									if (this.state.events.length < 1 && this.state.dataLoaded === true) {
+										return <Redirect to="/add-event" />;
+									} else {
+										return <Events {...this.state} selectEvent={this.selectEvent} />;
+									}
 								}
 							}}
 						/>
