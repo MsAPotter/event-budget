@@ -14,10 +14,12 @@ class BillCategory extends Component {
 
 	// REFERENCE: https://medium.com/@subalerts/implememting-a-simple-collapsible-component-in-react-js-67c796e64652
 	togglePanel(evt) {
+		console.log('BillCategory: togglePanel');
 		this.setState({ open: !this.state.open });
 	}
 
 	render() {
+		console.log('BillCategory: render');
 		let bills = [];
 		for (let i = 0; i < this.props.bills.length; i++) {
 			bills.push(<Bill key={i} bill={this.props.bills[i]} />);

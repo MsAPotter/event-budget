@@ -9,12 +9,14 @@ class Bill extends Component {
 	}
 
 	handleBillInput(evt) {
+		console.log('Bill: handleBillInput');
 		this.setState({
 			[evt.target.name]: evt.target.value
 		});
 	}
 
 	render() {
+		console.log('Bill: render');
 		return (
 			<div className="Bill">
 				<p className="Bill-Text">

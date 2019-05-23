@@ -27,7 +27,7 @@ class AddEvent extends Component {
 	}
 
 	handleChange(event) {
-		console.log('Home: handleChange');
+		console.log('AddEvent: handleChange');
 		this.setState({
 			[event.target.name]: event.target.value
 		});
@@ -42,7 +42,7 @@ class AddEvent extends Component {
 	// }
 
 	handleEventDetails(event) {
-		console.log('Home: handleEventDetails');
+		console.log('AddEvent: handleEventDetails');
 		event.preventDefault();
 		let newEvent = {
 			name: this.state.name,
@@ -62,7 +62,7 @@ class AddEvent extends Component {
 	}
 
 	componentDidMount() {
-		console.log('Home: componentDidMount');
+		console.log('AddEvent: componentDidMount');
 		var x = Math.floor(Math.random() * placeholder.length);
 		let placeholderVal = placeholder[x];
 		console.log(placeholderVal);
@@ -72,6 +72,7 @@ class AddEvent extends Component {
 	}
 
 	render() {
+		console.log('AddEvent: render');
 		if (this.state.submitted === true) {
 			return <Redirect to="/" />;
 		} else {

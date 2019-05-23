@@ -17,12 +17,14 @@ class Login extends Component {
 	}
 
 	handleUserFields(evt) {
+		console.log('Login: handleUserFields');
 		this.setState({
 			[evt.target.name]: evt.target.value
 		});
 	}
 
 	login(evt) {
+		console.log('Login: login');
 		evt.preventDefault();
 		if (this.state.username && this.state.password) {
 			axios.get('https://event-budget-api.herokuapp.com/api/users').then((users) => {
@@ -44,6 +46,7 @@ class Login extends Component {
 
 	signup(evt) {
 		evt.preventDefault();
+		console.log('Login: signup');
 		if (this.state.username && this.state.password && this.state.pwconfirm) {
 			if (this.state.password === this.state.pwconfirm) {
 				let newUser = {
@@ -66,6 +69,7 @@ class Login extends Component {
 	}
 
 	render() {
+		console.log('Login: render');
 		return (
 			<div className="Login">
 				<h2>Please sign in.</h2>

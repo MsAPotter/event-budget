@@ -9,10 +9,14 @@ class Sidenav extends Component {
 	}
 
 	render() {
+		console.log('Sidenav: render');
 		return (
 			<div className="sidebar">
 				<NavLink to="/">
 					<i className="sidebar-nav fa fa-home" /> Home
+				</NavLink>
+				<NavLink to="/add-event">
+					<i className="sidebar-nav fa fa-calendar" />Add Event
 				</NavLink>
 				<NavLink to="/expenses">
 					<i className="sidebar-nav fa fa-credit-card-alt" /> Expenses
