@@ -1,0 +1,43 @@
+.Login {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	text-align: center;
+}
+
+.Login > * {
+	margin: 20px auto;
+}
+
+.Login-Forms {
+	background: lightblue;
+	width: 80%;
+	border-radius: 5px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-content: center;
+}
+
+.Login-Login,
+.Login-Signup {
+	background-color: steelblue;
+	border-radius: 5px;
+	color: white;
+	margin: 1em;
+	padding: 1em;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+}
+
+.Login-Field,
+.Login-Submit {
+	max-width: 150px;
+}
+
+.Login-Submit {
+	background-color: navy;
+	color: white;
+	font-weight: 700;
+}
