@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Sidenav from './components/Sidenav/Sidenav';
 import { Route, Switch, Redirect } from 'react-router-dom';
-import Expenses from './components/Bills/Bills';
+import Bills from './components/Bills/Bills';
 import EventCost from './components/EventCost/EventCost';
 import Events from './components/Events/Events';
 import AddEvent from './components/AddEvent/AddEvent';
@@ -117,8 +117,8 @@ class App extends Component {
 						/>
 						<Route
 							exact
-							path="/expenses"
-							render={(routerProps) => <Expenses {...routerProps} {...this.state} />}
+							path="/bills"
+							render={(routerProps) => <Bills {...routerProps} {...this.state} />}
 						/>
 					</Switch>
 				</div>

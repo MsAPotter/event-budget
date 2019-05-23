@@ -56,7 +56,7 @@ class AddEvent extends Component {
 			.post(`https://event-budget-api.herokuapp.com/api/${this.props.userId}/events`, newEvent)
 			.then((posted) => {
 				console.log(posted);
-				this.setState({ submitted: true });
+				return <Redirect to="/bills" />;
 			});
 		// Reference:  https://stackoverflow.com/questions/28907965/how-do-i-add-a-component-after-an-submit-event-using-reactjs
 	}
@@ -73,39 +73,25 @@ class AddEvent extends Component {
 
 	render() {
 		console.log('AddEvent: render');
-		if (this.state.submitted === true) {
-			return <Redirect to="/" />;
-		} else {
-			return (
-				<div className="content">
-					<h1>Where do you want to go?</h1>
-					<h1>What do you want to do?</h1>
-
-					{/* <input
-							type="text"
-							name="event"
-							id="event"
-							placeholder="Take me to Greece!"
-							onChange={this.handleChange}
-							onSubmit={this.eventDetails}
-						/> */}
-
-					<form onSubmit={this.handleEventDetails}>
-						<input
-							type="text"
-							name="name"
-							// value={this.state.trip}
-							placeholder={this.state.placeholder}
-							onChange={this.handleChange}
-						/>
-						<div>
-							<input type="date" name="startDate" onChange={this.handleChange} />
-							<input type="date" name="endDate" onChange={this.handleChange} />
-						</div>
-					</form>
-				</div>
-			);
-		}
+		return (
+			<div className="content">
+				<h1>Where do you want to go?</h1>
+				<h1>What do you want to do?</h1>
+				<form onSubmit={this.handleEventDetails}>
+					<input
+						type="text"
+						name="name"
+						// value={this.state.trip}
+						placeholder={this.state.placeholder}
+						onChange={this.handleChange}
+					/>
+					<div>
+						<input type="date" name="startDate" onChange={this.handleChange} />
+						<input type="date" name="endDate" onChange={this.handleChange} />
+					</div>
+				</form>
+			</div>
+		);
 	}
 }
 
