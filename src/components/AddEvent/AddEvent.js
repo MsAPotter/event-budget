@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Redirect } from 'react-router-dom';
 import axios from 'axios';
+import EventCost from '../EventCost/EventCost.js';
 import './AddEvent.css';
 
 let placeholder = [
@@ -46,7 +46,7 @@ class AddEvent extends Component {
 			.post(`https://event-budget-api.herokuapp.com/api/${this.props.userId}/events`, newEvent)
 			.then((posted) => {
 				console.log(posted);
-				return <Redirect to="/bills" />;
+				this.setState({ submitted: true, event: newEvent });
 			});
 		// Reference:  https://stackoverflow.com/questions/28907965/how-do-i-add-a-component-after-an-submit-event-using-reactjs
 	}
@@ -64,7 +64,7 @@ class AddEvent extends Component {
 	render() {
 		console.log('AddEvent: render');
 		if (this.state.submitted === true) {
-			return <Redirect to="/event-cost" />;
+			return <EventCost {...this.state} />;
 		} else {
 			return (
 				<div className="content">
