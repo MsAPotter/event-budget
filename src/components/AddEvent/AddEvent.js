@@ -46,7 +46,7 @@ class AddEvent extends Component {
 			.post(`https://event-budget-api.herokuapp.com/api/${this.props.userId}/events`, newEvent)
 			.then((posted) => {
 				console.log(posted);
-				this.setState({ submitted: true });
+				return <Redirect to="/bills" />;
 			});
 		// Reference:  https://stackoverflow.com/questions/28907965/how-do-i-add-a-component-after-an-submit-event-using-reactjs
 	}
@@ -74,7 +74,6 @@ class AddEvent extends Component {
 						<input
 							type="text"
 							name="name"
-							// value={this.state.trip}
 							placeholder={this.state.placeholder}
 							onChange={this.handleChange}
 						/>
@@ -85,7 +84,7 @@ class AddEvent extends Component {
 					</form>
 				</div>
 			);
-		// }
+		}
 	}
 }
 

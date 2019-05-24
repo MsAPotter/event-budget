@@ -1,0 +1,19 @@
+.Event {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: center;
+	text-align: center;
+	background: #00c9a7;
+	color: white;
+	width: 50%;
+	min-width: auto;
+	border: 5px solid #00f8c6;
+	border-radius: 20px;
+	margin: 20px auto;
+	padding: 1em;
+}
+
+.Event > * {
+	margin: 10px auto;
+}

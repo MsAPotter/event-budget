@@ -10,8 +10,6 @@ import Login from './components/Login/Login.js';
 import axios from 'axios';
 import './App.css';
 
-// userId: '5ce45ac1456d2e0017bb0d7f',
-
 const newEvents = [];
 const TotalCosts = [];
 
