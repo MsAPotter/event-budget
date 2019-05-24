@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Sidenav.css';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import logo from '../../images/logo.png';
 
 class Sidenav extends Component {
@@ -14,7 +14,9 @@ class Sidenav extends Component {
 		return (
 			<div>
 				<div className="master-header">
-					<img src={logo} alt="logo" className="logo" />
+					<Link to="/">
+						<img src={logo} alt="logo" className="logo" />
+					</Link>
 					<h1 className="catch-phrase">
 						<hr className="heading-line" />Budget better by tracking backwards
 					</h1>

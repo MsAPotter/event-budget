@@ -128,7 +128,14 @@ class App extends Component {
 								if (!this.state.userId) {
 									return <Redirect to="/" />;
 								} else {
-									return <Events {...routerProps} {...this.state} selectEvent={this.selectEvent} />;
+									return (
+										<Events
+											{...routerProps}
+											{...this.state}
+											selectEvent={this.selectEvent}
+											fetchEvents={this.fetchEvents}
+										/>
+									);
 								}
 							}}
 						/>
