@@ -162,8 +162,8 @@ class Bills extends Component {
 				</div>
 			);
 		}
-		if (this.state.open === true) {
-			console.log('true');
+		// if (this.state.open === true) {
+		// 	console.log('true');
 			return (
 				<div className="Bills">
 					<h1 className="Bills-header">What are your monthly expenses?</h1>
@@ -180,10 +180,10 @@ class Bills extends Component {
 					</div>
 				</div>
 			);
-		} else {
-			console.log('false');
-			return <Income />;
-		}
+		// } else {
+		// 	console.log('false');
+		// 	return <Income />;
+		// }
 	}
 }
 
