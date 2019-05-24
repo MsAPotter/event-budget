@@ -12,7 +12,7 @@ class Events extends Component {
 	render() {
 		console.log('Events: render');
 		let eventCards = this.props.events.map((event, i) => {
-			return <Event {...this.props.events[i]} key={i} />;
+			return <Event {...this.props.events[i]} key={i} fetchEvents={this.props.fetchEvents} />;
 		});
 		return (
 			<div className="Events">

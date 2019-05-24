@@ -1,10 +1,24 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './Event.css';
 
 class Event extends Component {
 	constructor(props) {
 		super(props);
 		console.log(this.props);
+		this.deleteEvent = this.deleteEvent.bind(this);
+	}
+
+	deleteEvent(evt) {
+		evt.preventDefault();
+		console.log(this.props.userId);
+		console.log(this.props._id);
+		axios
+			.delete(`http://event-budget-api.herokuapp.com/api/${this.props.userId}/events/${this.props._id}`)
+			.then((delEvent) => {
+				console.log(delEvent);
+				this.props.fetchEvents(this.props.userId);
+			});
 	}
 
 	render() {
@@ -26,7 +40,15 @@ class Event extends Component {
 		console.log(today);
 		return (
 			<div className="Event">
-				<h2 className="Event-Name">{this.props.name}</h2>
+				<div className="Event-Header">
+					<h2 className="Event-Name">{this.props.name}</h2>
+					<div className="Event-Delete" onClick={this.deleteEvent}>
+						<p>Delete</p>
+						<div>
+							<i className="fas fa-trash" />
+						</div>
+					</div>
+				</div>
 				<h3 className="Event-Dates">{`${dates.start.slice(5, 7)}/${dates.start.slice(
 					8,
 					10
