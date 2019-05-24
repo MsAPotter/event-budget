@@ -1,7 +1,13 @@
+* {
+	margin: 0;
+}
 .App {
 	display: grid;
 	grid-template-rows: auto;
 	grid-template-columns: 160px auto;
+	background-color: #F2F5F7;
+	min-height: 100vh;
+
 }
 
 .App-Nav {

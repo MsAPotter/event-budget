@@ -1,54 +1,60 @@
+.master-header {
+  z-index: 5;
+  height: 60px;
+  background: #fff;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+}
+.logo {
+  width: 100px;
+  margin-left: 30px;
+}
+.heading-line {
+  display: inline;
+  margin-right: 20px;
+  margin-left: 28px;
+  border: 1px solid black;
+}
+.catch-phrase {
+  font-family: 'Merriweather', serif;
+  font-size: 22px;
+  font-weight: 400;
+  font-style: italic;
+  color: #303132;
+}
+
+
 .sidebar {
   height: 100%;
   width: 160px;
   position: fixed;
   z-index: 1;
-  top: 0;
+  top: 60px;
   left: 0;
-  background-color: #00c9a7;
+  background-color: #00A496;
   overflow-x: hidden;
-  box-shadow: 2px 2px 2px 2px #888888;
+  text-transform: capitalize;
 }
-.nav-header {
-  height: 100px;
-  background-color: #ffbb00;
-  margin-bottom: 20px;
-  text-align: center;
-  color: #444444;
-  font-weight: bolder;
-  /* background-image: url(https://images.pexels.com/photos/47344/dollar-currency-money-us-dollar-47344.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260);
-  background-size: contain; */
+
+.nav-all {
+  margin-top: 25px;
 }
 
 .sidebar-nav {
-  padding: 6px 8px 6px 16px;
-  text-decoration: none;
-  font-size: 20px;
-  color: #444444;
-  display: block;
-  margin-top: 50px;
+  color: #303132;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  padding: 10px 30px;
+  margin: 0;
+  width: 100%;
 }
 
-.fa {
-  display: inline-block;
-  text-decoration: none;
-  width: 20px;
-  margin: 5px;
+.sidebar-nav:hover {
+  background-color: rgb(53, 187, 176);
+  color: #fff;
 }
-
-/* icon plus content */
-.sidebar a {
-  text-decoration: none;
-  color: #444444;
-  display: block;
-  font-weight: bold;
-  font-family: 'Roboto', sans-serif;
-}
-
-.sidebar a:hover, .fa:hover {
-  color: #8a8787;
-}
-
 
 /* Add media queries for small screens (when the height of the screen is less than 450px, add a smaller padding and font-size) */
 @media screen and (max-height: 450px) {

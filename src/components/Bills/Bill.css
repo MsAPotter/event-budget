@@ -10,13 +10,19 @@
 .Bill-Text {
 	display: inline-block;
 	margin-left: 50px;
+	flex-grow: 2;
 }
 
 .Bill-Input {
 	outline: none;
 	width: 100px;
 	border: 1px solid grey;
-	margin-right: 50px;
+	/* margin-right: 50px; */
+	/* align-self: flex-end;	 */
+}
+.permonth {
+	display: inline-block;
+	/* align-self: flex-end;	 */
 }
 
 .fas {
