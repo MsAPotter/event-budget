@@ -24,7 +24,6 @@ class Bill extends Component {
 		let newBill = this.state
 		this.props.addNewBill(newBill)
 	}
-// }
 
 
 	render() {
@@ -41,7 +40,7 @@ class Bill extends Component {
 				<input type="text" 
 				className="Bill-Input" 
 				name={this.props.bill.name} 
-				onChange={this.handleBillInput} onBlur={this.sendUp}/>
+				onChange={this.handleBillInput} onBlur={this.sendUp}/><span className="permonth">/month</span>
 			</div>
 		);
 	}

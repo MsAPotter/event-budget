@@ -70,9 +70,9 @@ class AddEvent extends Component {
 	}
 
 	render() {
-		if (this.state.submitted === true) {
-			return <Redirect to="/event-cost" />;
-		} else {
+		// if (this.state.submitted === true) {
+		// 	return <Redirect to="/event-cost" />;
+		// } else {
 			return (
 				<div className="content">
 					<h1>Where do you want to go?</h1>
@@ -102,7 +102,7 @@ class AddEvent extends Component {
 					</form>
 				</div>
 			);
-		}
+		// }
 	}
 }
 

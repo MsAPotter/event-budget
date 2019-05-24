@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BillCategory from './BillCategory.js';
+import Income from '../Income/Income';
 import axios from 'axios'
 import './Bills.css';
 
@@ -7,6 +8,7 @@ class Bills extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			open: true,
 			billCategories: [ 'Home', 'Car', 'Food', 'Fixed Expenses', 'Technology', 'Lifestyle' ],
 			newBills: [],
 			bills: [
@@ -119,6 +121,7 @@ class Bills extends Component {
 		};
 		this.submitBills = this.submitBills.bind(this)
 		this.addNewBill = this.addNewBill.bind(this)
+		this.togglePanel = this.togglePanel.bind(this);
 	}
 
 	addNewBill(newBill) {
@@ -136,6 +139,9 @@ class Bills extends Component {
 			console.log(res);
 	});
 	}
+	togglePanel(evt) {
+		this.setState({ open: !this.state.open });
+	}
 
 	render() {
 
@@ -151,23 +157,34 @@ class Bills extends Component {
 				</div>
 			);
 		}
-		return (
-			<div className="Bills">
-				<h1 className="Bills-Intro">
-					Now it's time to calculate your <em>monthly</em> expenses! <br />If you don't know exactly, make
-					your best guess. And remember to round up!
-				</h1>
-				<div className="Bills-CategoryList">
-					<form onSubmit={this.submitBills}>
-						{categories}
-					<input type="submit" className="Bills-Submit"/>
-					</form>
-					
-
-				</div>
-			</div>
-		);
+		if (this.state.open === true ) {
+			console.log("true")
+			return (
+				
+					<div className="Bills">
+						<h1 className="Bills-Intro">
+							Now it's time to calculate your <em>monthly</em> expenses! <br />If you don't know exactly, make
+							your best guess. And remember to round up!
+						</h1>
+						<h1 className="Income-header"
+						onClick={(e) => this.togglePanel()}>Income </h1> 
+						{/* <h1 className="Income-header">Income</h1> */}
+						<hr></hr>
+						<div className="Bills-CategoryList">
+							<form onSubmit={this.submitBills}>
+								{categories}
+							<input type="submit" className="Bills-Submit"/>
+							</form>
+						</div>
+						
+					</div>
+				);
+		} else {
+			console.log("false")
+			return <Income />
+		}
 	}
-}
+	}
+
 
 export default Bills;
