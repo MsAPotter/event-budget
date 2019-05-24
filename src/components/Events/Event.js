@@ -6,6 +6,9 @@ class Event extends Component {
 	constructor(props) {
 		super(props);
 		console.log(this.props);
+		this.state = {
+			expenses: []
+		};
 		this.deleteEvent = this.deleteEvent.bind(this);
 	}
 
@@ -21,8 +24,28 @@ class Event extends Component {
 			});
 	}
 
+	componentDidMount() {
+		axios
+			.get(`http://event-budget-api.herokuapp.com/api/${this.props.userId}/events/${this.props._id}/expenses`)
+			.then((expenses) => {
+				console.log(expenses.data);
+				this.setState({ expenses: expenses.data });
+			});
+	}
+
 	render() {
 		console.log('Event: render');
+		let expenseTotal;
+		if (this.state.expenses) {
+			console.log(this.state.expenses);
+			let allExpenses = this.state.expenses.map((thisExpense) => {
+				return thisExpense.cost;
+			});
+			console.log(allExpenses);
+			expenseTotal = allExpenses.reduce((acc, cv) => {
+				return (acc += cv);
+			}, 0);
+		}
 		let dates = this.props.dates;
 		let today = new Date();
 		let start = Date.parse(dates.start);
@@ -31,13 +54,15 @@ class Event extends Component {
 				? Math.floor((start - today) / 1000 / 60 / 60 / 24 / 30)
 				: 0;
 		let savePerMonth;
-		if (monthsAway > 0) {
-			savePerMonth = 1500 / monthsAway;
+		if (monthsAway > 0 && this.state.expenses) {
+			savePerMonth = expenseTotal / monthsAway;
 		} else {
 			savePerMonth = 0;
 		}
-		console.log(dates);
-		console.log(today);
+
+		// expenseList = expenses.data.map((expense) => {
+		// 	console.log(expense.cost);
+		// 	return expense.data.cost;
 		return (
 			<div className="Event">
 				<div className="Event-Header">

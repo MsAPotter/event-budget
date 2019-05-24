@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import BillCategory from './BillCategory.js';
-import Income from '../Income/Income';
 import axios from 'axios';
 import './Bills.css';
 
@@ -164,22 +163,22 @@ class Bills extends Component {
 		}
 		// if (this.state.open === true) {
 		// 	console.log('true');
-			return (
-				<div className="Bills">
-					<h1 className="Bills-header">What are your monthly expenses?</h1>
-					{/* <h1 className="Income-header" onClick={(e) => this.togglePanel()}>
+		return (
+			<div className="Bills">
+				<h1 className="Bills-header">What are your monthly expenses?</h1>
+				{/* <h1 className="Income-header" onClick={(e) => this.togglePanel()}>
 						Income{' '}
 					</h1> */}
-					{/* <h1 className="Income-header">Income</h1> */}
-					<hr />
-					<div className="Bills-CategoryList">
-						<form onSubmit={this.submitBills}>
-							{categories}
-							<input type="submit" className="Bills-Submit" />
-						</form>
-					</div>
+				{/* <h1 className="Income-header">Income</h1> */}
+				<hr />
+				<div className="Bills-CategoryList">
+					<form onSubmit={this.submitBills}>
+						{categories}
+						<input type="submit" className="Bills-Submit" />
+					</form>
 				</div>
-			);
+			</div>
+		);
 		// } else {
 		// 	console.log('false');
 		// 	return <Income />;

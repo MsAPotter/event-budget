@@ -6,7 +6,7 @@ import '../EventCost/EventCost.css';
 class EventCost extends Component {
 	constructor(props) {
 		super(props);
-
+		console.log(this.props);
 		this.state = {
 			planeticket: '',
 			gas: '',
@@ -18,7 +18,7 @@ class EventCost extends Component {
 
 		this.handleChange = this.handleChange.bind(this);
 		// this.handleTotal = this.handleTotal.bind(this);
-		// this.handleTotalCost = this.handleTotalCost.bind(this);
+		this.handleTotalCost = this.handleTotalCost.bind(this);
 	}
 
 	handleChange(event) {
@@ -60,19 +60,10 @@ class EventCost extends Component {
 		}
 	}
 
-	// handleTotal(event) {
-	//     event.preventDefault();
-	//     let total = 0;
-	//     console.log(this.state.length)
-	//     for(var i=0;i<6;i++){
-	//         if(parseInt(this.state[i].value))
-	//             total += parseInt(this.state[i].value);
-	//     }
-	// }
-
 	handleTotalCost(event) {
-		console.log('EventCost: handleTotalCost');
 		event.preventDefault();
+		console.log('EventCost: handleTotalCost');
+		console.log(this.state);
 		let expenses = [
 			{
 				name: 'planeticket',
@@ -95,17 +86,20 @@ class EventCost extends Component {
 				cost: this.state.food
 			}
 		];
-		expenses.forEach((expense) => {
-			axios
-				.post(
-					`https://event-budget-api.herokuapp.com/api/${this.props.userId}/events/${this.props
-						.eventId}/expenses`,
-					expense
-				)
-				.then((exp) => {
-					console.log(exp);
-				});
-		});
+		console.log(this.props.userId);
+		console.log(this.props.eventId);
+		console.log(expenses);
+		axios
+			.post(
+				`http://event-budget-api.herokuapp.com/api/${this.props.userId}/events/${this.props.eventId}/expenses`,
+				expenses
+			)
+			.then((exp) => {
+				console.log(exp);
+			})
+			.catch((err) => {
+				console.error(err);
+			});
 
 		// console.log(totalCost);
 		// this.props.addTotalCost(totalCost);
