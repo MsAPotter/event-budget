@@ -31,18 +31,18 @@ class Bill extends Component {
 		console.log(this.props.userId);
 		return (
 			<div className="Bill">
-				<p className="Bill-Text">
-					<i className={`fas fa-${this.props.bill.icon}`} />
-					{this.props.bill.name}
-				</p>
-				<input
+			<input
 					type="text"
 					className="Bill-Input"
+					placeholder="0.00 per month"
 					name={this.props.bill.name}
 					onChange={this.handleBillInput}
 					onBlur={this.sendUp}
 				/>
-				<span className="permonth">/month</span>
+				<p className="Bill-Text">
+					{/* <i className={`fas fa-${this.props.bill.icon}`} /> */}
+					{this.props.bill.name}
+				</p>
 			</div>
 		);
 	}

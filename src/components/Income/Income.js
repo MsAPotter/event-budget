@@ -15,31 +15,47 @@ class Income extends Component {
     }
     
     render() {
-        if (this.state.open === true ) {
+        // if (this.state.open === true ) {
         return (
-            <div>
-            <div className="Bills"
-            onClick={(e) => this.togglePanel()}>
-            <h1 className="Bills-Intro">
-                Now it's time to calculate your <em>monthly</em> expenses! <br />If you don't know exactly, make
-                your best guess. And remember to round up!
-			</h1>
-                <h1 className="Bills-header">Bills</h1>
-                <hr></hr>
-                </div>
+   
+            <div className="Income">
+                {/* // onClick={(e) => this.togglePanel()}> */}
+                <h1 className="Income-header">What is your total income?</h1>
+					<hr />
+					<div className="Income-all-lines">
+                    <div className="Income-line-items">
+                        <input type="text" 
+                        className="Income-inputs" 
+                        placeholder="0.00 per month"/>
+                        <p className="Income-text">Monthly Salary</p>
+                        </div>
+					{/* </div> */}
+                    {/* <div className="Income-line-items"> */}
+                    <div className="Income-line-items">
+                        <input type="text" 
+                        className="Income-inputs"
+                        placeholder="0.00 per month" />
+                        <p className="Income-text">Second Job Salary</p>
+                        </div>
+					{/* </div> */}
+                    {/* <div className="Income-line-items"> */}
+                    <div className="Income-line-items">
+                        <input type="text" 
+                        className="Income-inputs"
+                        placeholder="0.00 per month" />
+                        <p className="Income-text">Side Hustle</p>
+                        </div>
+					</div>
 
-                <p>Monthly take-home Pay</p>
-                <input type="text" />
-                {/* <h1 className="Bills-header"
-						onClick={(e) => this.togglePanel()}>Bills </h1> <h1 className="Income-header">Income</h1>
-						<hr></hr> */}
+                    <input type="submit" className="Income-Submit" />
+               
             </div>
         );
-    }
-    else {
-        console.log("false")
-        return <Bills />
-    }
+    // }
+    // else {
+    //     console.log("false")
+    //     return <Bills />
+    // }
 }
 }
 
