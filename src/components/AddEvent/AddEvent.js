@@ -10,8 +10,6 @@ let placeholder = [
 	'Bermuda, Bahama, come on pretty mama'
 ];
 
-// let userId = '5ce45ac1456d2e0017bb0d7f';
-
 class AddEvent extends Component {
 	constructor(props) {
 		super(props);
@@ -32,14 +30,6 @@ class AddEvent extends Component {
 			[event.target.name]: event.target.value
 		});
 	}
-
-	// eventDetails(trip) {
-	// 	console.log('Home: eventDetails');
-	// 	let newEvent = {
-	// 		trip: this.state.trip
-	// 	};
-	// 	this.props.addEvent(newEvent);
-	// }
 
 	handleEventDetails(event) {
 		console.log('AddEvent: handleEventDetails');
@@ -73,25 +63,28 @@ class AddEvent extends Component {
 
 	render() {
 		console.log('AddEvent: render');
-		return (
-			<div className="content">
-				<h1>Where do you want to go?</h1>
-				<h1>What do you want to do?</h1>
-				<form onSubmit={this.handleEventDetails}>
-					<input
-						type="text"
-						name="name"
-						// value={this.state.trip}
-						placeholder={this.state.placeholder}
-						onChange={this.handleChange}
-					/>
-					<div>
-						<input type="date" name="startDate" onChange={this.handleChange} />
-						<input type="date" name="endDate" onChange={this.handleChange} />
-					</div>
-				</form>
-			</div>
-		);
+		if (this.state.submitted === true) {
+			return <Redirect to="/event-cost" />;
+		} else {
+			return (
+				<div className="content">
+					<h1>Where do you want to go?</h1>
+					<h1>What do you want to do?</h1>
+					<form onSubmit={this.handleEventDetails}>
+						<input
+							type="text"
+							name="name"
+							placeholder={this.state.placeholder}
+							onChange={this.handleChange}
+						/>
+						<div>
+							<input type="date" name="startDate" onChange={this.handleChange} />
+							<input type="date" name="endDate" onChange={this.handleChange} />
+						</div>
+					</form>
+				</div>
+			);
+		}
 	}
 }
 

@@ -1,19 +1,25 @@
 .BillCategory {
 	margin: 20px auto;
-	width: 75vw;
+	width: 50vw;
 }
 
 .BillCategory-Title {
 	cursor: pointer;
-	padding: 15px;
-	border: 1px solid #ffbb00;
-	color: #444444;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	padding-left: 30px;
+	/* border: 1px solid #ffbb00; */
+	/* background-color: #00c9a7; */
+	/* color: #444444; */
+	border: 1px solid #00c9a7;
+	background-color: #00c9a7;
+	color: #fff;
 	font-family: verdana;
-	border-top-right-radius: 30px;
-	border-bottom-right-radius: 30px;
+	border-radius: 30px;
 	margin: 0 auto;
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 span {
 	float: right;
+	padding-right: 30px;
 }
