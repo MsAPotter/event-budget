@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BillCategory from './BillCategory.js';
+import axios from 'axios'
 import './Bills.css';
 
 class Bills extends Component {
@@ -7,6 +8,7 @@ class Bills extends Component {
 		super(props);
 		this.state = {
 			billCategories: [ 'Home', 'Car', 'Food', 'Fixed Expenses', 'Technology', 'Lifestyle' ],
+			newBills: [],
 			bills: [
 				{
 					name: 'Rent / Mortgage',
@@ -115,6 +117,24 @@ class Bills extends Component {
 				}
 			]
 		};
+		this.submitBills = this.submitBills.bind(this)
+		this.addNewBill = this.addNewBill.bind(this)
+	}
+
+	addNewBill(newBill) {
+		let newBills = this.state.newBills
+		newBills.push(newBill)
+		this.setState({newBills: newBills})
+	}
+
+	submitBills(evt, newBillArray) {
+		evt.preventDefault()
+			axios.post(`https://event-budget-api.herokuapp.com/api/${this.props.userId}/bills/`, this.state.newBills.filter((newBill) => {
+				return newBill.name
+			}))
+			.then((res) => {
+			console.log(res);
+	});
 	}
 
 	render() {
@@ -123,7 +143,8 @@ class Bills extends Component {
 		for (let i = 0; i < this.state.billCategories.length; i++) {
 			categories.push(
 				<div key={i}>
-					<BillCategory
+					<BillCategory addNewBill={this.addNewBill}
+						{...this.props}
 						category={this.state.billCategories[i]}
 						bills={this.state.bills.filter((bill) => bill.category === this.state.billCategories[i])}
 					/>
@@ -137,10 +158,12 @@ class Bills extends Component {
 					your best guess. And remember to round up!
 				</h1>
 				<div className="Bills-CategoryList">
-					{categories}
-					<button type="submit" className="Bills-Submit">
-						Submit
-					</button>
+					<form onSubmit={this.submitBills}>
+						{categories}
+					<input type="submit" className="Bills-Submit"/>
+					</form>
+					
+
 				</div>
 			</div>
 		);
