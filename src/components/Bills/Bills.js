@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import BillCategory from './BillCategory.js';
 import Income from '../Income/Income';
-import axios from 'axios'
+import axios from 'axios';
 import './Bills.css';
 
 class Bills extends Component {
@@ -119,25 +119,29 @@ class Bills extends Component {
 				}
 			]
 		};
-		this.submitBills = this.submitBills.bind(this)
-		this.addNewBill = this.addNewBill.bind(this)
+		this.submitBills = this.submitBills.bind(this);
+		this.addNewBill = this.addNewBill.bind(this);
 		this.togglePanel = this.togglePanel.bind(this);
 	}
 
 	addNewBill(newBill) {
-		let newBills = this.state.newBills
-		newBills.push(newBill)
-		this.setState({newBills: newBills})
+		let newBills = this.state.newBills;
+		newBills.push(newBill);
+		this.setState({ newBills: newBills });
 	}
 
 	submitBills(evt, newBillArray) {
-		evt.preventDefault()
-			axios.post(`https://event-budget-api.herokuapp.com/api/${this.props.userId}/bills/`, this.state.newBills.filter((newBill) => {
-				return newBill.name
-			}))
+		evt.preventDefault();
+		axios
+			.post(
+				`https://event-budget-api.herokuapp.com/api/${this.props.userId}/bills/`,
+				this.state.newBills.filter((newBill) => {
+					return newBill.name;
+				})
+			)
 			.then((res) => {
-			console.log(res);
-	});
+				console.log(res);
+			});
 	}
 	togglePanel(evt) {
 		this.setState({ open: !this.state.open });
@@ -149,7 +153,8 @@ class Bills extends Component {
 		for (let i = 0; i < this.state.billCategories.length; i++) {
 			categories.push(
 				<div key={i}>
-					<BillCategory addNewBill={this.addNewBill}
+					<BillCategory
+						addNewBill={this.addNewBill}
 						{...this.props}
 						category={this.state.billCategories[i]}
 						bills={this.state.bills.filter((bill) => bill.category === this.state.billCategories[i])}
@@ -157,34 +162,29 @@ class Bills extends Component {
 				</div>
 			);
 		}
-		if (this.state.open === true ) {
-			console.log("true")
+		if (this.state.open === true) {
+			console.log('true');
 			return (
-				
-					<div className="Bills">
-						<h1 className="Bills-Intro">
-							Now it's time to calculate your <em>monthly</em> expenses! <br />If you don't know exactly, make
-							your best guess. And remember to round up!
-						</h1>
-						<h1 className="Income-header"
-						onClick={(e) => this.togglePanel()}>Income </h1> 
-						{/* <h1 className="Income-header">Income</h1> */}
-						<hr></hr>
-						<div className="Bills-CategoryList">
-							<form onSubmit={this.submitBills}>
-								{categories}
-							<input type="submit" className="Bills-Submit"/>
-							</form>
-						</div>
-						
+				<div className="Bills">
+					<h1 className="Bills-Header">What are your monthly expenses?</h1>
+					<h1 className="Income-header" onClick={(e) => this.togglePanel()}>
+						Income{' '}
+					</h1>
+					{/* <h1 className="Income-header">Income</h1> */}
+					<hr />
+					<div className="Bills-CategoryList">
+						<form onSubmit={this.submitBills}>
+							{categories}
+							<input type="submit" className="Bills-Submit" />
+						</form>
 					</div>
-				);
+				</div>
+			);
 		} else {
-			console.log("false")
-			return <Income />
+			console.log('false');
+			return <Income />;
 		}
 	}
-	}
-
+}
 
 export default Bills;

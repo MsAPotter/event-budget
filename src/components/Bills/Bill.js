@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './Bill.css';
-import axios from 'axios';
-
 
 class Bill extends Component {
 	constructor(props) {
@@ -9,39 +7,42 @@ class Bill extends Component {
 		console.log(this.props);
 		this.handleBillInput = this.handleBillInput.bind(this);
 
-		this.state = {}
-		this.sendUp = this.sendUp.bind(this)
+		this.state = {};
+		this.sendUp = this.sendUp.bind(this);
 	}
 
 	handleBillInput(evt) {
 		console.log('Bill: handleBillInput');
 		this.setState({
-				name: evt.target.name,
-				amount: evt.target.value
-		})
+			name: evt.target.name,
+			amount: evt.target.value
+		});
 	}
 
 	sendUp(evt) {
-		let newBill = this.state
-		this.props.addNewBill(newBill)
+		let newBill = this.state;
+		this.props.addNewBill(newBill);
 	}
 
-
 	render() {
-		console.log(this.props)
-		console.log(this.props.bill)
-		console.log(this.state.amount)
-		console.log(this.props.userId)
+		console.log(this.props);
+		console.log(this.props.bill);
+		console.log(this.state.amount);
+		console.log(this.props.userId);
 		return (
 			<div className="Bill">
 				<p className="Bill-Text">
 					<i className={`fas fa-${this.props.bill.icon}`} />
 					{this.props.bill.name}
 				</p>
-				<input type="text" 
-				className="Bill-Input" 
-				name={this.props.bill.name} 
-				onChange={this.handleBillInput} onBlur={this.sendUp}/><span className="permonth">/month</span>
+				<input
+					type="text"
+					className="Bill-Input"
+					name={this.props.bill.name}
+					onChange={this.handleBillInput}
+					onBlur={this.sendUp}
+				/>
+				<span className="permonth">/month</span>
 			</div>
 		);
 	}

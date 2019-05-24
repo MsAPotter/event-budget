@@ -93,43 +93,83 @@ class App extends Component {
 							exact
 							path="/"
 							render={(routerProps) => {
-								console.log(this.state.events);
-								console.log(this.state.dataLoaded);
 								if (!this.state.userId) {
-									return <Login fetchEvents={this.fetchEvents} selectUser={this.selectUser} />;
+									return (
+										<Login
+											{...routerProps}
+											fetchEvents={this.fetchEvents}
+											selectUser={this.selectUser}
+										/>
+									);
 								} else {
 									if (this.state.events.length < 1 && this.state.dataLoaded === true) {
 										return <Redirect to="/add-event" />;
 									} else {
-										return <Events {...this.state} selectEvent={this.selectEvent} />;
+										return <Redirect to="/events" />;
 									}
 								}
 							}}
 						/>
-						<Route exact path="/add-event" render={(routerProps) => <AddEvent {...this.state} />} />
+						<Route
+							exact
+							path="/add-event"
+							render={(routerProps) => {
+								if (!this.state.userId) {
+									return <Redirect to="/" />;
+								} else {
+									return <AddEvent {...routerProps} {...this.state} />;
+								}
+							}}
+						/>
+						<Route
+							exact
+							path="/events"
+							render={(routerProps) => {
+								if (!this.state.userId) {
+									return <Redirect to="/" />;
+								} else {
+									return <Events {...routerProps} {...this.state} selectEvent={this.selectEvent} />;
+								}
+							}}
+						/>
 						<Route
 							exact
 							path="/event-cost"
-							render={(routerProps) => (
-								<EventCost addTotalCost={this.addTotalCost} {...this.state} {...routerProps} />
-							)}
+							render={(routerProps) => {
+								if (!this.state.userId) {
+									return <Redirect to="/" />;
+								} else {
+									return (
+										<EventCost addTotalCost={this.addTotalCost} {...this.state} {...routerProps} />
+									);
+								}
+							}}
 						/>
 						<Route
 							exact
 							path="/bills"
-							render={(routerProps) => <Bills {...routerProps} {...this.state} />}
+							render={(routerProps) => {
+								if (!this.state.userId) {
+									return <Redirect to="/" />;
+								} else {
+									return <Bills {...routerProps} {...this.state} />;
+								}
+							}}
 						/>
 						<Route
 							exact
 							path="/income"
-							render={(routerProps) => (
-								<Income {...this.state} {...routerProps} />
-							)}
+							render={(routerProps) => {
+								if (!this.state.userId) {
+									return <Redirect to="/" />;
+								} else {
+									return <Income {...this.state} {...routerProps} />;
+								}
+							}}
 						/>
 					</Switch>
 				</div>
 			</div>
-			
 		);
 	}
 }

@@ -72,17 +72,9 @@ class Login extends Component {
 		console.log('Login: render');
 		return (
 			<div className="Login">
-				<h2>Please sign in.</h2>
-				<p>
-					<em>
-						Please note that this was designed to simulate login for multiple users, but there is no actual
-						authentication implemented and the data is not encrypted. Please do not use a real password or
-						provide any real-world information you are not comfortable sharing.
-					</em>
-				</p>
 				<div className="Login-Forms">
 					<div className="Login-Login">
-						<h2>Log In</h2>
+						<h2 className="Login-FormHeader">Log In</h2>
 						<form onSubmit={this.login}>
 							<input
 								className="Login-Field"
@@ -102,7 +94,7 @@ class Login extends Component {
 						</form>
 					</div>
 					<div className="Login-Signup">
-						<h2>Sign Up</h2>
+						<h2 className="Login-FormHeader">Sign Up</h2>
 						<form onSubmit={this.signup}>
 							<input
 								className="Login-Field"
@@ -129,6 +121,13 @@ class Login extends Component {
 						</form>
 					</div>
 				</div>
+				<p className="Login-Disclaimer">
+					<em>
+						Please note that this was designed to simulate login for multiple users, but there is no actual
+						authentication implemented and the data is not encrypted. Please do not use a real password or
+						provide any real-world information you are not comfortable sharing.
+					</em>
+				</p>
 			</div>
 		);
 	}

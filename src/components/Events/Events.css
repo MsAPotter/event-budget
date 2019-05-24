@@ -1,23 +1,28 @@
-.events-heading {
-	padding: 10px;
-	background-color: #00c9a7;
-	color: #fff;
-    font-size: 28px;
-    font-family: 'Roboto', sans-serif;
+.Events {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-content: center;
+	padding: 10px 0;
 }
-.listedEvents {
-    /* border: 1px solid #ffbb00;
-    color: #444444; */
-    background-color: #ffbb00;
-    color: #fff;
-    margin: 20px;
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-around;
-}
-.nameOfEvent, .startDate, .endDate, .monthly-savings {
-    display: inline-block;
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
 
+.Events-Intro {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-content: flex-start;
+	text-align: left;
+	background: white;
+	color: #303132;
+	width: 90%;
+	margin: 5px auto;
+	padding: 0.5em;
+}
+
+.Events-Intro > * {
+	margin: 10px;
+}
+
+.Events-IntroHeader {
+	border-bottom: 1px solid #ddd;
 }
