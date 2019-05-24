@@ -1,6 +1,8 @@
 .Bills {
 	margin: 20px auto;
 	width: 80%;
+	background: #fff;
+	padding: 20px;
 }
 .Bills-Intro {
 	padding: 15px;
@@ -13,24 +15,23 @@
 	box-shadow: 1px 1px 1px 1px #888888;
 }
 .Bills-header {
-	color: #444;
-	font-size: 18px;
+	font-family: 'Fira Sans', sans-serif;
+	color: #303132;
+	opacity: 0.9;
+	font-size: 28px;
 	font-weight: bold;
-	letter-spacing: .1em;
 	display: inline-block;
-	margin-left: 50px;
-	cursor: pointer;
+	margin-bottom: 10px;
 }
-.Income-header {
+/* .Income-header {
 	float: right;
 	margin-right: 50px;
 	cursor: pointer;
-}
-.Income-header:hover {
-	color: rgb(182, 179, 179);
-}
+} */
+
 hr {
 	width: 100%;
+	opacity: 0.3;
 }
 
 .Bills-CategoryList {
@@ -54,12 +55,10 @@ hr {
 }
 
 .Bills-Submit {
-	margin: 20px 45%;
 	font-size: 18px;
-	border-radius: 5px;
 	padding: 10px 30px;
 	width: 150px;
-	background: #025928;
+	background: #F1A100;
 	color: #fff;
 	font-weight: 700;
 	border: 1px solid #fff;

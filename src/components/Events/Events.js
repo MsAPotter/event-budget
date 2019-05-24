@@ -18,7 +18,7 @@ class Events extends Component {
 			<div className="Events">
 				<div className="Events-Intro">
 					<h2 className="Events-IntroHeader">Budget with a goal in mind</h2>
-					<p>
+					<p className="mission">
 						At TRACKiT, we believe that anyone can save money! Stay motivated by connecting your savings to
 						your goals in life! Track your spending and budget with ease. Add a new goal by answering a few
 						simple questions, then check back here to monitor your progress!

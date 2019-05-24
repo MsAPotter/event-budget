@@ -25,4 +25,9 @@
 
 .Events-IntroHeader {
 	border-bottom: 1px solid #ddd;
+	font-family: 'Merriweather', serif;
+}
+
+.mission {
+	font-family: 'Merriweather', serif;
 }

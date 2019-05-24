@@ -166,10 +166,10 @@ class Bills extends Component {
 			console.log('true');
 			return (
 				<div className="Bills">
-					<h1 className="Bills-Header">What are your monthly expenses?</h1>
-					<h1 className="Income-header" onClick={(e) => this.togglePanel()}>
+					<h1 className="Bills-header">What are your monthly expenses?</h1>
+					{/* <h1 className="Income-header" onClick={(e) => this.togglePanel()}>
 						Income{' '}
-					</h1>
+					</h1> */}
 					{/* <h1 className="Income-header">Income</h1> */}
 					<hr />
 					<div className="Bills-CategoryList">
